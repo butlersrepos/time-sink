@@ -1,0 +1,10 @@
+{
+	"restartable": "rs",
+	"ignore": [
+		"nodemon.json"
+	],
+	"watch" : [
+		"bin/www",
+		"src/"
+	]
+}

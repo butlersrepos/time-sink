@@ -1,0 +1,16 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+.hidden {
+  display: none !important; }
+
+.surroundings {
+  transition: opacity .33s ease-in;
+  opacity: 1; }
+  .surroundings.updating {
+    opacity: 0; }
+
+/*# sourceMappingURL=style.css.map */
