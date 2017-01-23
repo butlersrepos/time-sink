@@ -1,7 +1,9 @@
 var webpack = require('webpack');
 
 module.exports = {
-	entry: './src/main.js',
+	entry: [
+		'./src/main.js'
+	],
 	output: {
 		filename: 'bundle.js',
 		path: __dirname + '/public/javascripts'
@@ -23,6 +25,9 @@ module.exports = {
 			query: {
 				presets: ['es2015']
 			}
+		}, {
+			test: /\.scss$/,
+			loaders: ["style-loader", "css-loader", "sass-loader"]
 		}]
 	}
 };

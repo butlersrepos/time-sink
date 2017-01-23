@@ -1,5 +1,5 @@
 {
-  "name": "socket-slide",
+  "name": "time-sink",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -10,17 +10,21 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",
+    "jquery": "^3.1.1",
+    "mongoose": "^4.7.7",
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.9.8",
+    "pixi.js": "^4.3.4",
     "pug": "~2.0.0-beta6",
     "riot": "^3.0.7",
     "riotjs-loader": "^4.0.0",
+    "sass-loader": "^4.1.1",
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.7.2",
     "webpack": "^1.14.0"
   },
   "scripts": {
-    "start": "SET DEBUG=socket-slide:* & node ./bin/www",
+    "start": "SET DEBUG=time-sink:* & nodemon ./bin/www",
     "build:js": "webpack --config webpack.config.js",
     "watch:js": "webpack --config webpack.config.js --watch"
   }

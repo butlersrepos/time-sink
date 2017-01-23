@@ -1,3 +1,5 @@
+import './scss/main.scss';
+
 /// UTILS ///
 import { $, $$ } from './client-utils';
 
@@ -5,43 +7,12 @@ import { $, $$ } from './client-utils';
 import reducerConfig from './state-reducers/reducer-config';
 const STORE = Redux.createStore(reducerConfig);
 
+let socket = io('https://' + document.location.hostname + ':3000');
+
 // VIEW COMPONENT ///
 import './components/app.tag';
-riot.mount('*', {store: STORE});
+import './components/chat-room.tag';
+import './components/username-field.tag';
 
-$('.connect').addEventListener('click', function () {
-	let chosenName = document.querySelector('.connection-name').value;
-	if (!chosenName || chosenName.length < 1) return;
-	socket.emit('nameChange', { name: chosenName });
-});
 
-$('.look-around').addEventListener('click', function () {
-	$('.surroundings').classList.add('updating');
-	socket.emit('look', null, nearbyPlayers => {
-		setTimeout(() => {
-			STORE.dispatch({
-				type: 'surroundings',
-				data: nearbyPlayers
-			});
-			$('.surroundings').classList.remove('updating');
-		}, 500);
-	});
-});
-
-// SOCKET STUFF //
-
-let socket = io('https://' + document.location.hostname + ':3000');
-socket.on('nearby', function (nearbyPlayers) {
-	console.log(`You have ${nearbyPlayers.length} players near you!`);
-});
-
-updatePosition();
-function updatePosition() {
-	navigator.geolocation.getCurrentPosition(position => {
-		let data = {
-			lat: position.coords.latitude,
-			lon: position.coords.longitude
-		};
-		socket.emit('currentPosition', data);
-	});
-}
+riot.mount('*', {store: STORE, socket: socket});

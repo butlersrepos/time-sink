@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var app = require('../app');
 var fs = require('fs');
-var debug = require('debug')('socket-slide:server');
+var debug = require('debug')('time-sink:server');
 var https = require('https');
 
 var port = normalizePort(process.env.PORT || '3000');
@@ -67,5 +67,5 @@ function onListening() {
 	debug('Listening on ' + bind);
 }
 
-let MapGame = require('../src/map-game');
-MapGame.init(io);
+let ChatSystem = require('../src/chats/chat-sockets');
+ChatSystem.attachSockets(io);
